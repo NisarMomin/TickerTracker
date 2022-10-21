@@ -97,6 +97,8 @@ def register():
     # Show registration form with message (if any)
     return render_template('register.html', msg=msg)
 
+
+
 # http://localhost:5000/pythinlogin/home - this will be the home page, only accessible for loggedin users
 @app.route('/pythonlogin/home')
 def home():
@@ -108,7 +110,9 @@ def home():
 
        retrFBInfo = yf.Ticker("AAPL")  
 
-       data = retrFBInfo.info['city']
+       data = retrFBInfo.history(period="3mo") 
+	 
+	  
 
        return render_template('home.html',data=[data],username=session['username'])
     # User is not loggedin redirect to login page
